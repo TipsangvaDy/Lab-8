@@ -244,6 +244,11 @@ void AVLTree<T>::printInorder() const {
 
 template <typename T>
 void AVLTree<T>::printBalance(Node<T>* node) const {
+    if (node == nullptr) return;
+
+    printBalance(node->left);
+    cout << node->data << "(" << balance(node) << ") ";
+    printBalance(node->right);
     // inorder: left, print data and balance factor, right
     // format: 10(0) 20(0) 25(0) 30(1) 40(0)
     // use a space after each node, including the last
